@@ -5,9 +5,9 @@ django-cors-headers==3.5.0
 django-rest-framework==0.1.0
 djangorestframework==3.11.1
 flake8==3.8.3
-importlib-metadata @ file:///tmp/build/80754af9/importlib-metadata_1593446406207/work
+importlib-metadata
 mccabe==0.6.1
-psycopg2 @ file:///tmp/build/80754af9/psycopg2_1594305108220/work
+psycopg2
 pycodestyle==2.6.0
 pyflakes==2.2.0
 pytz==2020.1
