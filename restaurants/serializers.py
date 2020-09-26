@@ -54,10 +54,6 @@ class CreateReviewSerializer(serializers.ModelSerializer):
             'rating',
         ]
 
-    def get_name(self, obj):
-        # return obj.user.first_name
-        return obj.user.username
-
 
 class SpecificRestaurantSerializer(serializers.ModelSerializer):
     avg_rating = serializers.SerializerMethodField(read_only=True)

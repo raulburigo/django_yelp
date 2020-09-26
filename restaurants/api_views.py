@@ -1,5 +1,6 @@
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework import authentication, permissions
 from .models import Restaurant
 from .serializers import (
     RestaurantListSerializer,
@@ -9,6 +10,9 @@ from .serializers import (
 
 
 class Base(APIView):
+    authentication_classes = [authentication.SessionAuthentication]
+    permission_classes = [permissions.AllowAny]
+
     def get(self, request, format=None):
         restaurants = Restaurant.objects.all()
         serializer = RestaurantListSerializer(restaurants, many=True)
@@ -35,7 +39,11 @@ class Base(APIView):
 
 
 class Specific(APIView):
+    authentication_classes = [authentication.SessionAuthentication]
+    permission_classes = [permissions.AllowAny]
+
     def get(self, request, id, format=None):
+        print(request.user)
         restaurant = Restaurant.objects.filter(id=id).first()
         if restaurant is None:
             return Response({'status': 'failed'}, status=404)
@@ -80,17 +88,18 @@ class Specific(APIView):
 
 
 class Review(APIView):
+    authentication_classes = [authentication.SessionAuthentication]
+    permission_classes = [permissions.IsAuthenticated]
+
     def post(self, request, id, format=None):
         restaurant = Restaurant.objects.filter(id=id).first()
         if restaurant is None:
             return Response({'status': 'failed'}, status=404)
-        new_review = {**request.data, 'restaurant': id}
-        alt_data = {
+        new_review = {
             **request.data,
             'restaurant': id,
-            'user': request.user
+            'user': request.user.id
         }
-        print(alt_data)
         serializer = CreateReviewSerializer(data=new_review)
         if serializer.is_valid():
             serializer.save()
