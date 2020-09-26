@@ -71,10 +71,10 @@ WSGI_APPLICATION = 'django_yelp_clone.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'django_yelp',
-        'USER': 'postgres',
-        'PASSWORD': 'post123',
-        'HOST': 'db',
+        'NAME': 'dqvdalr26l264',
+        'USER': 'tvnbuvvtrrxxdq',
+        'PASSWORD': '211b9d6a142ffdf8be56c5ef421446dc3cd3a55a0ba3b74088eec4ad16b52a1f',
+        'HOST': 'ec2-35-169-92-231.compute-1.amazonaws.com',
         'PORT': '5432',
     }
 }
