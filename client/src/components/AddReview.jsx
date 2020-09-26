@@ -25,7 +25,17 @@ function AddReview(props) {
                 )
                 addReview(result)
             } catch (err) {
-                console.log(err)
+                console.log(err);
+                if (err.response.status === 403) {
+                    if (window.confirm('You must log in to add reviews') === true) {
+                        window.location.href = '/accounts/login'
+                    }
+                } else if (err.response.status === 400) {
+                    if (err.response.data.non_field_errors[0] === "The fields user, restaurant must make a unique set.") {
+                    alert("You already reviewd this restaurant")
+                    // todo: update review
+                    }
+                }
             }
             setReview('')
             setRating(0)

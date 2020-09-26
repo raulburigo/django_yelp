@@ -11,18 +11,27 @@ function AddRestaurant() {
     // nao gosto disso pq ele tá permitindo submeter o form com price_range errado
     const handleSubmit = async e => {
         e.preventDefault()
-        try {
-            const response = await RestaurantFinder.post('', {
-                name,
-                location,
-                price_range: priceRange
-            })
-            addRestaurant(response.data.data.restaurant)
-            setName('')
-            setLocation('')
-            setPriceRange('Price Range')
-        } catch (err) {
-            console.log(err)
+        if (priceRange === 'Price Range') {
+            alert("You forgot to select the price range")
+        } else {
+            try {
+                const response = await RestaurantFinder.post('', {
+                    name,
+                    location,
+                    price_range: priceRange
+                })
+                addRestaurant(response.data.data.restaurant)
+                setName('')
+                setLocation('')
+                setPriceRange('Price Range')
+            } catch (err) {
+                console.log(err)
+                if (err.response.status === 400) {
+                    if (err.response.data.non_field_errors[0] === "The fields name, location must make a unique set.") {
+                        alert("There already is a restaurant with this name in this location")
+                    }
+                }
+            }
         }
     }
 
