@@ -20,7 +20,3 @@ def update_view(request, id):
         'page': 'update',
         'id': id
     }})
-
-
-def teste_view(request):
-    return render(request, 'teste.html')
