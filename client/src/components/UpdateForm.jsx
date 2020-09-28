@@ -41,10 +41,20 @@ function UpdateForm(props) {
         }
     }
 
+    const handleDelete = async e => {
+        e.preventDefault()
+        try {
+            await RestaurantFinder.delete(`/${id}`)
+            window.location.href = ('/')
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
     return (
         <div>
             { restaurant !== 404 ? (
-            <form onSubmit={handleSubmit}>
+            <form>
                 <div className="form-group">
                     <label htmlFor="name">Name</label>
                     <input
@@ -78,7 +88,10 @@ function UpdateForm(props) {
                         <option value="5">$$$$$</option>
                     </select>
                 </div>
-                <button type="submit" className="btn btn-primary">Update</button>
+                <div className="form-group text-center">
+                    <button type="submit" onClick={e => handleSubmit(e)} className="btn btn-primary mx-1">Update</button>
+                    <button type="delete" onClick={e => handleDelete(e)} className="btn btn-danger mx-1">Delete</button>
+                </div>
             </form>)
             :
             <h3 className="text-center text-danger">404 - restaurant not found</h3>

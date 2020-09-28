@@ -122,7 +122,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = Path.joinpath(BASE_DIR, 'staticfiles')
 
 STATICFILES_DIRS = (
-    Path.joinpath(BASE_DIR, 'static'),
+    Path.joinpath(BASE_DIR, 'client', 'build', 'static'),
 )
 
 CORS_URLS_REGEX = r'^/api/.*$'
