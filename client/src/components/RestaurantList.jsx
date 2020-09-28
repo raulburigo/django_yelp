@@ -27,16 +27,16 @@ function RestaurantList() {
     }
 
     return (
-        <div className="list-group">
+        <div className="table-responsive">
             <table className="table table-hover table-dark">
                 <thead>
-                    <tr className="bg-primary text-center">
+                    <tr className="bg-primary">
                         <th scope="col">Restaurant</th>
                         <th scope="col">Location</th>
                         <th scope="col">Price Range</th>
                         <th scope="col">Ratings</th>
-                        <th scope="col">Edit</th>
-                        <th scope="col">Delete</th>
+                        <th className="d-none d-md-table-cell"  scope="col">Edit</th>
+                        <th className="d-none d-md-table-cell"  scope="col">Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -49,8 +49,8 @@ function RestaurantList() {
                             <StarRating rating={restaurant.avg_rating}/>
                             <span className="text-warning">({restaurant.count})</span>
                         </td> : <td><span className="text-warning">no reviews</span></td>}
-                        <td><button onClick={e => handleUpdate(e, restaurant.id)} className="btn btn-warning">Update</button></td>
-                        <td><button onClick={e => handleDelete(e, restaurant.id)} className="btn btn-danger">Delete</button></td>
+                        <td className="d-none d-md-table-cell"><button onClick={e => handleUpdate(e, restaurant.id)} className="btn btn-warning">Update</button></td>
+                        <td className="d-none d-md-table-cell"><button onClick={e => handleDelete(e, restaurant.id)} className="btn btn-danger">Delete</button></td>
                     </tr>
                     ))}                              
                 </tbody>

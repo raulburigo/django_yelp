@@ -20,7 +20,7 @@ function UpdateForm(props) {
         }
         fetchData().catch(err => {
             console.log(err);
-            if (err.response.status === 404) {
+            if (err.response && err.response.status === 404) {
                 setRestaurant(404)
             }
         });

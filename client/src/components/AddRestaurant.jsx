@@ -38,13 +38,13 @@ function AddRestaurant() {
     return (
         <div className="mb-4">
             <form onSubmit={handleSubmit}>
-                <div className="form-row">
+                <div className="form-row mx-auto">
                     <div className="col">
                         <input
                             className="form-control"
                             type="text"
                             required
-                            placeholder="restaurant name"
+                            placeholder="name"
                             value={name}
                             onChange={e => setName(e.target.value)}
                         />
@@ -54,7 +54,7 @@ function AddRestaurant() {
                             className="form-control"
                             type="text"
                             required
-                            placeholder="restaurant location"
+                            placeholder="location"
                             value={location}
                             onChange={e => setLocation(e.target.value)}                            
                         />
