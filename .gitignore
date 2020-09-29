@@ -131,3 +131,8 @@ dmypy.json
 /.vscode
 
 /client/node_modules/
+
+# docker files
+docker-compose.yml
+Dockerfile
+pipfreeze
