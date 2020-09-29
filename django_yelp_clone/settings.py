@@ -1,4 +1,5 @@
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -8,13 +9,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'o_%c+25spw^jb=-tylrma0bptky#)s^zw-a2sj!)jfbk4+38!&'
+SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    '127.0.0.1',
     'yelp-like-app.herokuapp.com'
 ]
 
@@ -74,7 +74,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'dqvdalr26l264',
         'USER': 'tvnbuvvtrrxxdq',
-        'PASSWORD': '211b9d6a142ffdf8be56c5ef421446dc3cd3a55a0ba3b74088eec4ad16b52a1f',
+        'PASSWORD': os.environ['DATABASE_PASS'],
         'HOST': 'ec2-35-169-92-231.compute-1.amazonaws.com',
         'PORT': '5432',
     }
