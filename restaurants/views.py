@@ -1,10 +1,11 @@
 from django.shortcuts import render
+import os
 
 
 def home_view(request):
     return render(request, 'index.html', {'dataset': {
         'page': 'home',
-        'id': None
+        'id': os.environ['TESTE']
     }})
 
 
