@@ -135,4 +135,4 @@ dmypy.json
 # docker files
 docker-compose.yml
 Dockerfile
-pipfreeze
+pipfreeze.txt
